@@ -132,11 +132,11 @@ export interface Page {
 //查询app导航页面模块
 export interface pageInfoResponse {
   code: number;
-  data: pageData[];
+  data: pageDataType[];
   message: string;
 }
 
-interface pageData {
+export interface pageDataType {
   _id: string;
   moduleName: string;
   index: number;
@@ -150,12 +150,11 @@ interface pageData {
   companyId: string;
   srcSub?: string[];
   buttonMark?: string;
-  queryMap?: QueryMap;
+  queryMap?: pageDataQueryMap;
   imgUrl?: string;
   imgLink?: string;
 }
-
-interface QueryMap {
+interface pageDataQueryMap {
   showNumber: string;
   workMark: string;
 }

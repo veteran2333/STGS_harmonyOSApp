@@ -1,10 +1,10 @@
 
-import { getSubscribeByMenuId } from'../common/api/userApi'
+import { getSubscribeByMenuId,queryModules } from'../common/api/userApi'
 import { AxiosResponse, AxiosError } from '@ohos/axios'
 import uinfo from '../common/utils/getUserInfo';
-import { ColumnInfoResponse,Page} from '../common/type/userType';
+import { ColumnInfoResponse,Page,pageInfoResponse,pageDataType} from '../common/type/userType';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
+import  ModuleList from '../component/ModuleList'
 // 定义 params 接口
 interface Params {
   productId: string;
@@ -28,10 +28,12 @@ export default  struct HomePage {
   @Prop selectedMenuId: string = 'default';
   // 默认第一个菜单的第一个导航
   @State selectedPageId:string=''
+  @State pageData:pageDataType[]=[]
 
   aboutToAppear(): void {
     this.getColumnData()
   }
+  // 获取导航
   getColumnData(){
     let params:Params = {productId:uinfo.getProductId() }
     let data:Data  = {
@@ -46,19 +48,33 @@ export default  struct HomePage {
         if (data&&data.code===0) {
           this.columnData = data.data.pages
           this.selectedPageId = this.columnData[0].pageId
-          this.getPageData(this.selectedPageId,'')
+          this.getPageData(this.selectedPageId,uinfo.getProductId())
           this.isLoading = false;
-          hilog.info(0x0000, '请求成功', 'columnData : %{public}s', JSON.stringify(this.columnData) ?? '');
+          hilog.info(0x0000, '请求成功', '导航columnData : %{public}s', JSON.stringify(this.columnData) ?? '');
         } else {
-          hilog.info(0x0000, '请求失败1', 'columnData : %{public}s', JSON.stringify(this.columnData) ?? '');
+          hilog.info(0x0000, '请求失败1', '导航columnData : %{public}s', JSON.stringify(this.columnData) ?? '');
         }
       })
       .catch((err: AxiosError<ColumnInfoResponse>) => {
         console.log('请求出错:', err.message);
       });
   }
-  getPageData(pageId:string,productId:string){
 
+  // 获取导航内模块
+  getPageData(pageId:string,productId:string){
+    queryModules(pageId,productId)
+      .then((response: AxiosResponse<pageInfoResponse>) => {
+        const data = response.data;
+        if (data&&data.code===0) {
+          this.pageData = data.data
+          hilog.info(0x0000, '请求成功', '模块列表pageData : %{public}s', JSON.stringify(this.pageData) ?? '');
+        } else {
+          hilog.info(0x0000, '请求失败1', '模块列表pageData : %{public}s', JSON.stringify(this.pageData) ?? '');
+        }
+      })
+      .catch((err: AxiosError<pageInfoResponse>) => {
+        console.log('请求出错:', err.message);
+      });
   }
   build() {
       Column(){
@@ -71,12 +87,14 @@ export default  struct HomePage {
             Tabs({barPosition:BarPosition.Start}){
               ForEach(this.columnData, (item: Page, index: number) => {
                 TabContent(){
-                  Text(item.name+'页面')
+                  ModuleList({ modeLIstData: this.pageData })
                 }.tabBar(this.tabBuilder(index,item.name))
-              })
+              },(item:Page) => item.circleId)
             }
             .onChange((Index:number)=>{
               this.selectedIndex = Index
+              this.selectedPageId = this.columnData[Index].pageId
+              this.getPageData(this.selectedPageId,uinfo.getProductId())
             })
             .width('100%') // 设置宽度为100%
             .scrollable(true) // 启用滚动

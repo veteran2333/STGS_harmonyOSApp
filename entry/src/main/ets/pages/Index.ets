@@ -13,7 +13,6 @@ struct Index {
   @State menuData:MenuInfoResponseData[]=[]
   @State selectedMenuId:string='default'
 
-
   onPageShow(): void {
     queryMenusBaseInfoByProductId(uinfo.getProductId(),uinfo.getYsUserId())
       .then((response: AxiosResponse<MenuInfoResponse>) => {
@@ -39,20 +38,8 @@ struct Index {
           ForEach(this.menuData, (item: MenuInfoResponseData, index: number) => {
             TabContent() {
               HomePage({ selectedMenuId: item.menuId})
-              // if (index === 0) {
-              //   HomePage({ selectedMenuId: item.menuId})
-              // } else if (index === 1) {
-              //   ServePage({ selectedMenuId: item.menuId})
-              // } else if (index === 2) {
-              //   // HomePage({ selectedMenuId: this.selectedMenuId })
-              // } else if (index === 3) {
-              //   // Text('4')
-              // } else if (index === 4) {
-              //   Text('5')
-              // }
-            // }
             }.tabBar(this.tabBuilder(index,item.name,item.customizeChosedIcon,item.customizeUnChosedIcon,item.chosedColor)) // 使用 menuName 作为 tabBar 的显示文本
-          })
+          },(item:MenuInfoResponseData)=>item.menuId)
         }.onChange((Index:number)=>{
           this.selectedIndex = Index
           this.selectedMenuId = this.menuData[Index].menuId

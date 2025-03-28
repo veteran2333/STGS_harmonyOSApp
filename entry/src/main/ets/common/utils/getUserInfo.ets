@@ -12,13 +12,16 @@ const appUtils: AppUtils = {
     return 'D407CA0C210D49DF';
   },
   getYsUserId() {
-    return '355595535695247D407CA0C210D49DF';
+    return '636f135ce4b072f834bdde2d';//正式
+    return '355595535695247D407CA0C210D49DF';//测试
   },
   getAppcode() {
+    // return 'FABU_YUNSHI';
     return 'STGS';
   },
   getProductId() {
-    return '063DD3A8567E4FEC8B11E66128D24764';
+    return '063DD3A8567E4FEC8B11E66128D24764';//正式
+    // return '063DD3A8567E4FEC8B11E66128D24764';//测试
   }
 };
 

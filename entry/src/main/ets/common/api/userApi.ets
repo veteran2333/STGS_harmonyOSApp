@@ -50,13 +50,13 @@ export function fanLoginByApp( data: UserInfoRequestData): Promise<AxiosResponse
   });
 }
 //查询app导航页面模块
-export function queryModules(productId:string,pageId:string): Promise<AxiosResponse<pageInfoResponse>> {
+export function queryModules(pageId:string,productId:string): Promise<AxiosResponse<pageInfoResponse>> {
   return axiosInstance({
     url: '/api/xy/toc/v1/queryModules',
     method: 'GET',
     params: {
-      productId,
-      pageId
+      pageId,
+      productId
     }
   });
 }
