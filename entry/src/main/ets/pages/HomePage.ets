@@ -112,7 +112,7 @@ export default  struct HomePage {
     Column(){
       Text(name)
         .fontSize(16)
-        .fontColor(index === this.selectedIndex ? '#64a089' : '#8E8E93') // 选中时蓝色，未选中时灰色
+        .fontColor(index === this.selectedIndex ? '#44999a' : '#666666') // 选中时蓝色，未选中时灰色
         .fontWeight(index === this.selectedIndex ? FontWeight.Bold : FontWeight.Normal) // 选中时加粗
     }
     .justifyContent(FlexAlign.Center)

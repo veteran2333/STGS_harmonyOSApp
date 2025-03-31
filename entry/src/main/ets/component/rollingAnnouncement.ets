@@ -60,7 +60,7 @@ export default  struct rollingAnnouncement {
             .backgroundColor('#fff')
             .height(46)
 
-            .onClick((item) => {
+            .onClick(() => {
               console.log('进入滚动公告',JSON.stringify(item))
             })
 

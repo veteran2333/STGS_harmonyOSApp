@@ -3,6 +3,9 @@ import {pageDataType} from '../common/type/userType';
 import newSwiper from '../component/newSwiper'
 import rollingAnnouncement from '../component/rollingAnnouncement'
 import customizeImage from '../component/customizeImage'
+import bigImageList from '../component/bigImageList'
+import leftWordRightImage from '../component/leftWordRightImage'
+import rowMoreImage from '../component/rowMoreImage'
 
 @Component
 export default  struct ModuleList {
@@ -33,6 +36,12 @@ export default  struct ModuleList {
                   rollingAnnouncement({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
                 }else if(item.type==='自定义图片'){
                   customizeImage({ imgUrl: item.imgUrl, imgLink: item.imgLink })
+                }else if(item.type==='大图列表'){
+                  bigImageList({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
+                }else if(item.type==='左文右图'){
+                  leftWordRightImage({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
+                }else if(item.type==='横版多图'){
+                  rowMoreImage({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
                 }else {
                   Text(item.type)
                     .width('70%')
@@ -66,7 +75,7 @@ export default  struct ModuleList {
             }, 2000)
             console.log('onRefreshing test')
           })
-          .backgroundColor(0x89CFF0)
+          .backgroundColor('#ecf1f9')
           .refreshOffset(64)
           .pullToRefresh(true)
 

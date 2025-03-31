@@ -35,51 +35,111 @@ interface Docs {
 }
 
 export interface Result {
-  docid: string;
-  weight: number;
-  moduleId: string;
-  pageId: string;
-  _id: string;
-  imageCount: number;
-  classify: string;
-  showTotalPv: string;
-  intime: string;
-  srclink: string;
-  departmentId: string;
-  videos: Video[];
-  source: string;
-  title: string;
-  userid: string;
-  pushtime: string;
-  isRelease: string;
-  videoCount: number;
-  companyid: string;
-  vocabulary: string;
-  docs: string[];
-  articleType: number;
-  audioCount: number;
-  ctime: string;
-  contentType: string;
-  summary: string;
-  thumbnail: string;
-  images: Image[];
-  isNewFabu: string;
-  utime: string;
-  author: string;
-  zhuanti: Zhuanti[];
-  mthId: string;
-  showPublishTime: string;
-  isNew: string;
-  sourceDocId: string;
-  srcType: number;
-  special: string;
-  audios: string[];
-  extend1: string;
-  cibiao: Cibiao[];
-  taskId: string;
-  status: number;
-  isIndex: string;
-  isChoise: string;
+  docid?: string;
+  weight?: number;
+  moduleId?: string;
+  pageId?: string;
+  _id?: string;
+  imageCount?: number;
+  classify?: string;
+  showTotalPv?: string;
+  intime?: string;
+  srclink?: string;
+  departmentId?: string;
+  videos?: Video[];
+  source?: string;
+  title?: string;
+  userid?: string;
+  pushtime?: string;
+  isRelease?: string;
+  videoCount?: number;
+  companyid?: string;
+  vocabulary?: string;
+  docs?: string[];
+  articleType?: number;
+  audioCount?: number;
+  ctime?: string;
+  contentType?: string;
+  summary?: string;
+  thumbnail?: string;
+  images?: Image[];
+  isNewFabu?: string;
+  utime?: string;
+  author?: string;
+  zhuanti?: Zhuanti[];
+  mthId?: string;
+  showPublishTime?: string;
+  isNew?: string;
+  sourceDocId?: string;
+  srcType?: number;
+  special?: string;
+  audios?: string[];
+  extend1?: string;
+  cibiao?: Cibiao[];
+  taskId?: string;
+  status?: number;
+  isIndex?: string;
+  isChoise?: string;
+  liveRoomId?: string;
+  liveStatus?: string;
+  cuserType?: string;
+  companyId?: string;
+  appCode?: string;
+  isDel?: string;
+  cuserId?: string;
+  roomName?: string;
+  type?: string;
+  lives?: liveList[];
+  isOpen?: string;
+  startTime?: string;
+  endTime?: string;
+  listImg?: string;
+  listImgContainText?: string;
+  viewSet?: ViewSet;
+  commentConfig?: CommentConfig;
+  menu?: string[];
+  menuName?: string[];
+  shareConfig?: ShareConfig;
+  viewType?: string;
+  liveTemplate?: string;
+  isQuickReview?: string;
+  template?: number;
+  H5url?: string;
+  disabledLive?: number;
+  supportLive?: number;
+  supportTime?: number;
+  order?: number;
+  ctimeStamp?: number;
+  cuserName?: string;
+  label?: Label[];
+  wechatId?: string;
+  checkStatus?: string;
+  autoStart?: string;
+  autoEnd?: string;
+  companyName?: string;
+  showBackwardTime?: string;
+  isGenerateLookBack?: string;
+  isTest?: string;
+  masterCompanyCheckStatus?: string;
+  uuserId?: string;
+  uuserName?: string;
+  checkUserName?: string;
+  handledTimes?: number;
+  openTimeShift?: string;
+  liveStartTime?: number;
+  duration?: number;
+  liveEndTime?: number;
+  lookBackIsDelete?: string;
+  utimeStamp?: number;
+
+
+  jibie?: string;
+  servicecode?: string;
+  appcode?: string;
+  indexid?: string;
+  subZhuanti?: string[];
+  contentId?: string;
+  src?: string;
 }
 
 interface Cibiao {
@@ -101,6 +161,7 @@ interface Image {
   widthList: string;
   iname: string;
   height: number;
+  describe?: string;
 }
 
 interface Video {
@@ -113,4 +174,54 @@ interface Video {
   vurl: string;
   vthumburl: string;
   height: number;
+}
+
+//大图列表（直播）
+
+interface Label {
+  labelId: string;
+  labelName: string;
+}
+
+interface ShareConfig {
+  commentDownLoad: boolean;
+  desc: string;
+  likeDownLoad: boolean;
+  rewardDownLoad: boolean;
+  thumbnail: string;
+  title: string;
+}
+
+interface CommentConfig {
+  robot: string;
+  state: string;
+}
+
+interface ViewSet {
+  autoTarget: number;
+  linear: boolean;
+  pvBase: number;
+  pvShow: string;
+  randomNum: number;
+  randomShow: string;
+  weight: boolean;
+  weightStrategy: string;
+}
+
+export interface liveList {
+  backUrl: string;
+  channelId: string;
+  channelUserId: string;
+  ctime: string;
+  duration: string;
+  isBack: string;
+  isQuickReview: string;
+  name: string;
+  pullStream: string;
+  pushStream: string;
+  stream: string;
+  streamType: string;
+  thumbnail: string;
+  uuid: string;
+  'isCompleted ': string;
 }

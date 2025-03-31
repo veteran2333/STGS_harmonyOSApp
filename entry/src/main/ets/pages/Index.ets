@@ -58,7 +58,7 @@ struct Index {
     Column(){
       Image(index===this.selectedIndex?customizeChosedIcon:customizeUnChosedIcon)
         .width(30)
-      Text(name).fontColor(index===this.selectedIndex?chosedColor:'rgb(153, 153, 153)')
+      Text(name).fontColor(index===this.selectedIndex?chosedColor:'#2c2c2c')
     }
   }
 

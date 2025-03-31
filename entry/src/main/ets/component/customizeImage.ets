@@ -1,5 +1,5 @@
 // 自定义图片customizeImage
-
+import {MARGIN_TOP_Modules}from '../common/style/moduleVariables'
 @Component
 export default  struct customizeImage {
   @Prop imgUrl:string
@@ -23,7 +23,7 @@ export default  struct customizeImage {
           console.log('点击了自定义图片地址',this.imgLink)
         })
     }
-    .margin({top:5})
+    .margin({top:MARGIN_TOP_Modules})
 
   }
 

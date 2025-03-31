@@ -65,7 +65,7 @@ export default  struct newSwiper {
               .padding({bottom:5})
               .width('100%')
             }
-            .onClick((item) => {
+            .onClick(() => {
                 console.log('进入专题',JSON.stringify(item))
             })
 
