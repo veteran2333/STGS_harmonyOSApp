@@ -57,6 +57,7 @@ struct Index {
   tabBuilder(index: number, name: string, customizeChosedIcon: string,customizeUnChosedIcon:string,chosedColor:string) {
     Column(){
       Image(index===this.selectedIndex?customizeChosedIcon:customizeUnChosedIcon)
+        .alt($r('app.media.defaultImage'))
         .width(30)
       Text(name).fontColor(index===this.selectedIndex?chosedColor:'#2c2c2c')
     }

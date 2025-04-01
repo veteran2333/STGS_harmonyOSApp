@@ -19,6 +19,7 @@ export default  struct customizeImage {
       //     .width('100%')
       // }
       Image(this.imgUrl)
+        .alt($r('app.media.defaultImage'))
         .onClick(() => {
           console.log('点击了自定义图片地址',this.imgLink)
         })

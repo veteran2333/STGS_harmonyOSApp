@@ -46,6 +46,7 @@ export default  struct leftWordRightImage {
                 .fontSize(12)
                 .textOverflow({overflow:TextOverflow.Ellipsis})
                 .maxLines(2)
+                .height(32)
             }
             .width('100%')
 
@@ -62,10 +63,10 @@ export default  struct leftWordRightImage {
 
             }
             .width('100%')
-
           }
           .layoutWeight(1)
           Image(item.thumbnail)
+            .alt($r('app.media.defaultImage'))
             .width(90)
             .aspectRatio(16/10)
             .borderRadius(5)

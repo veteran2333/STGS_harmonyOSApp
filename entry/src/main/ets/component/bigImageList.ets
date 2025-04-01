@@ -43,6 +43,7 @@ export default  struct bigImageList {
       Stack({ alignContent: Alignment.Bottom}) {
         Column() {
             Image(this.liveData[0]?.thumbnail)
+              .alt($r('app.media.defaultImage'))
               // .width('100%')
               .height(191.25)
               .aspectRatio(16/9)

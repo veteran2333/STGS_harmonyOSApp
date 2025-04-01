@@ -8,6 +8,9 @@ import customizeImage from '../component/customizeImage'
 import bigImageList from '../component/bigImageList'
 import leftWordRightImage from '../component/leftWordRightImage'
 import rowMoreImage from '../component/rowMoreImage'
+import newsList from '../component/newsList'
+import topModule from '../component/topModule'
+import WaterFlowPage from '../component/WaterFlowPage'
 
 @Component
 export default  struct ModuleList {
@@ -42,8 +45,19 @@ export default  struct ModuleList {
                   bigImageList({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
                 }else if(item.type==='左文右图'){
                   leftWordRightImage({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
-                }else if(item.type==='横版多图'){
-                  rowMoreImage({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum,src:item.src })
+                }else if(item.type==='横版多图') {
+                  rowMoreImage({
+                    pageId: item.pageId,
+                    modules: item._id,
+                    freshPageNum: this.freshPageNum,
+                    src: item.src
+                  })
+                }else if(item.type==='文章列表') {
+                  newsList({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
+                }else if(item.type==='top'){
+                  topModule({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
+                }else if(item.type==='waterfallFlow'){
+                  WaterFlowPage({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
                 }else {
                   Text(item.type)
                     .width('70%')

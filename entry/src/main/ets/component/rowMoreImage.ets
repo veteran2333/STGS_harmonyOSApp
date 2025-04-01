@@ -75,11 +75,13 @@ export default  struct rowMoreImage {
                 Row(){
                   if(this.src!=='2'){
                     Image(item.thumbnailUrl)
+                      .alt($r('app.media.defaultImage'))
                       .width('100%')
                       .borderRadius(5)
                   }else {
                     if(item.lives){
                         Image(item.lives[0].thumbnail)
+                          .alt($r('app.media.defaultImage'))
                           .width('100%')
                           .borderRadius(5)
                     }

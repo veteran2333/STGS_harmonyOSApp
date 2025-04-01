@@ -44,6 +44,7 @@ export default  struct newSwiper {
               Column(){
 
                 Image(item.thumbnail)
+                  .alt($r('app.media.defaultImage'))
                   .width('100%')
                   .aspectRatio(16/9)
               }
