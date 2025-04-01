@@ -83,7 +83,22 @@ export default  struct rowMoreImage {
                         Image(item.lives[0].thumbnail)
                           .alt($r('app.media.defaultImage'))
                           .width('100%')
-                          .borderRadius(5)
+                          .borderRadius(1)
+                      if(item.lives[0].isBack==='yes'){
+                        Text('回看')
+                          .backgroundColor('red')
+                          .height(14)
+                          .width(28)
+                          .borderRadius(10)
+                          .textAlign(TextAlign.Center)
+                          .fontSize(9)
+                          .fontColor('#fff')
+                          .position({
+                            right:2,
+                            top:2
+                          })
+                      }
+
                     }
                   }
 
