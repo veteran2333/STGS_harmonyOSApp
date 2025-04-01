@@ -162,6 +162,14 @@ export interface Result {
   userName?: string;
   status_zh?: string;
   subSpecial?: SubSpecial[];
+  // 瀑布流
+  hasVoice?: number;
+  authorThumbnail?: string;
+  pv?: number;
+  isFollow?: string;
+  likeNum?: number;
+  commentNum?: number;
+  isPushUp?: string;
 
 }
 
