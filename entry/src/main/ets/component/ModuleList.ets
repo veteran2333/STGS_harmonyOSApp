@@ -1,3 +1,5 @@
+// 模块数据来源，0文本  1文章  2直播  3专题  4词标  5媒体号推荐  6:媒体号文章   7：媒体号专题 8:应急信息，9：标签*
+
 
 import {pageDataType} from '../common/type/userType';
 import newSwiper from '../component/newSwiper'
@@ -41,7 +43,7 @@ export default  struct ModuleList {
                 }else if(item.type==='左文右图'){
                   leftWordRightImage({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
                 }else if(item.type==='横版多图'){
-                  rowMoreImage({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
+                  rowMoreImage({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum,src:item.src })
                 }else {
                   Text(item.type)
                     .width('70%')
@@ -56,7 +58,7 @@ export default  struct ModuleList {
             }, (item: pageDataType) => item._id)
           }
           .onScrollIndex((first: number) => {
-            console.info(first.toString())
+            // console.info(first.toString())
           })
           .width('100%')
           .height('100%')

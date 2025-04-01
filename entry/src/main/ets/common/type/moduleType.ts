@@ -27,10 +27,10 @@ export interface moduleData {
 }
 
 interface Docs {
-  pageNum: number;
-  totalRecord: number;
-  currentPage: number;
-  totalPage: number;
+  pageNum?: number;
+  totalRecord?: number;
+  currentPage?: number;
+  totalPage?: number;
   results: Result[];
 }
 
@@ -140,6 +140,29 @@ export interface Result {
   subZhuanti?: string[];
   contentId?: string;
   src?: string;
+  // 横板多图
+  describe?: string;
+  name?: string;
+  specialType?: string;
+  ispay?: number;
+  thumbnailUrl?: string;
+  thumbnailWidth?: number;
+  thumbnailHeight?: number;
+  cost?: number;
+  outerUrl?: string;
+  validityTime?: number;
+  remark?: string;
+  courseDescription?: string;
+  introductionName?: string;
+  listName?: string;
+  personName?: string;
+  personHead?: string;
+  personBiography?: string;
+  personDescription?: string;
+  userName?: string;
+  status_zh?: string;
+  subSpecial?: SubSpecial[];
+
 }
 
 interface Cibiao {
@@ -224,4 +247,9 @@ export interface liveList {
   thumbnail: string;
   uuid: string;
   'isCompleted ': string;
+}
+//横板多图
+interface SubSpecial {
+  subId: string;
+  subName: string;
 }

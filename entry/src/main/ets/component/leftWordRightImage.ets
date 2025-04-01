@@ -25,7 +25,7 @@ export default  struct leftWordRightImage {
     queryDatas(this.pageId,modules,uinfo.getProductId())
       .then((response: AxiosResponse<newSwiperItemType>) => {
         const data = response.data;
-        if (data&&data.code===0) {
+        if (data&&data.code===0&&data.data[this.modules]) {
           this.moduleData = data.data[this.modules].docs.results
           hilog.info(0x0000, '请求成功', '左文右图moduleData : %{public}s', JSON.stringify(this.moduleData) ?? '');
         } else {
@@ -92,5 +92,6 @@ export default  struct leftWordRightImage {
     .backgroundColor('#fff')
     .margin({top:MARGIN_TOP_Modules})
   }
+
 
 }
