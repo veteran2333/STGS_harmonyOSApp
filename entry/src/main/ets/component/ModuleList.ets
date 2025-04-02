@@ -11,12 +11,15 @@ import rowMoreImage from '../component/rowMoreImage'
 import newsList from '../component/newsList'
 import topModule from '../component/topModule'
 import WaterFlowPage from '../component/WaterFlowPage'
+import smallImageList from '../component/smallImageList'
+import bigPictureList from '../component/bigPictureList'
 
 @Component
 export default  struct ModuleList {
   scroller: Scroller = new Scroller()
   // 模块列表
   @Prop modeLIstData:pageDataType[]=[]
+  @Prop clickPageitem:string=''
 
   // 下拉刷新
   @State isRefreshing: boolean = false
@@ -42,7 +45,11 @@ export default  struct ModuleList {
                 }else if(item.type==='自定义图片'){
                   customizeImage({ imgUrl: item.imgUrl, imgLink: item.imgLink })
                 }else if(item.type==='大图列表'){
-                  bigImageList({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
+                  if(item.src==='3'&&this.clickPageitem==='政事'){
+                    bigPictureList({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
+                  }else {
+                    bigImageList({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
+                  }
                 }else if(item.type==='左文右图'){
                   leftWordRightImage({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
                 }else if(item.type==='横版多图') {
@@ -58,6 +65,8 @@ export default  struct ModuleList {
                   topModule({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
                 }else if(item.type==='waterfallFlow'){
                   WaterFlowPage({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
+                }else if(item.type==='小图列表'){
+                  smallImageList({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
                 }else {
                   Text(item.type)
                     .width('70%')

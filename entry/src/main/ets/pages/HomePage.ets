@@ -87,7 +87,7 @@ export default  struct HomePage {
             Tabs({barPosition:BarPosition.Start}){
               ForEach(this.columnData, (item: Page, index: number) => {
                 TabContent(){
-                  ModuleList({ modeLIstData: this.pageData })
+                  ModuleList({ modeLIstData: this.pageData,clickPageitem:item.name })
                 }.tabBar(this.tabBuilder(index,item.name))
               },(item:Page) => item.circleId)
             }
