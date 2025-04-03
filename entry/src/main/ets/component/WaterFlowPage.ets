@@ -41,9 +41,9 @@ export default  struct WaterFlowPage {
         if (data&&data.code===0&&data.data[this.modules]) {
           this.moduleData = data.data[this.modules].docs.results
           this.newsInfo(this.moduleData)
-          hilog.info(0x0000, '请求成功', '左文右图moduleData : %{public}s', JSON.stringify(this.moduleData) ?? '');
+          hilog.info(0x0000, '请求成功', '瀑布流moduleData : %{public}s', JSON.stringify(this.moduleData) ?? '');
         } else {
-          hilog.info(0x0000, '请求失败1', '左文右图moduleData : %{public}s', JSON.stringify(this.moduleData) ?? '');
+          hilog.info(0x0000, '请求失败1', '瀑布流moduleData : %{public}s', JSON.stringify(this.moduleData) ?? '');
         }
       })
       .catch((err: AxiosError<newSwiperItemType>) => {
@@ -111,7 +111,7 @@ export default  struct WaterFlowPage {
       .margin({top:10})
     }
     .onClick(() => {
-      console.log('进入左文右图', JSON.stringify(item))
+      console.log('进入瀑布流', JSON.stringify(item))
     })
   }
 }

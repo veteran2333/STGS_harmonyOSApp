@@ -1,4 +1,4 @@
-// 瀑布流
+// 文章列表
 import {newSwiperItemType,Result,liveList} from '../common/type/moduleType';
 import {queryDatas} from '../common/api/moduleApi'
 import { AxiosResponse, AxiosError } from '@ohos/axios'
@@ -41,9 +41,9 @@ export default  struct newsList {
         if (data&&data.code===0&&data.data[this.modules]) {
           this.moduleData = data.data[this.modules].docs.results
           this.newsInfo(this.moduleData)
-          hilog.info(0x0000, '请求成功', '瀑布流moduleData : %{public}s', JSON.stringify(this.moduleData) ?? '');
+          hilog.info(0x0000, '请求成功', '文章列表moduleData : %{public}s', JSON.stringify(this.moduleData) ?? '');
         } else {
-          hilog.info(0x0000, '请求失败1', '瀑布流moduleData : %{public}s', JSON.stringify(this.moduleData) ?? '');
+          hilog.info(0x0000, '请求失败1', '文章列表moduleData : %{public}s', JSON.stringify(this.moduleData) ?? '');
         }
       })
       .catch((err: AxiosError<newSwiperItemType>) => {
@@ -103,7 +103,7 @@ export default  struct newsList {
         .margin({ left: 5, right: 5 })
     }
     .onClick(() => {
-      console.log('进入左文右图', JSON.stringify(item))
+      console.log('进入文章列表左文右图', JSON.stringify(item))
     })
     .padding({ top: 10, bottom: 10 })
     .border({

@@ -46,6 +46,33 @@ struct Index {
           console.log('父',Index,this.selectedMenuId)
 
         })
+        // Stack({ alignContent: Alignment.Bottom }) {
+        //   Column(){
+        //     HomePage({ selectedMenuId: this.selectedMenuId})
+        //   }
+        //     .height('100%')
+        //     .padding({bottom:60})
+        //   Row(){
+        //     ForEach(this.menuData, (item: MenuInfoResponseData, index: number) => {
+        //       Column(){
+        //         Image(index===this.selectedIndex?item.customizeChosedIcon:item.customizeUnChosedIcon)
+        //           .width(30)
+        //         Text(item.name).fontColor(index===this.selectedIndex?item.chosedColor:'#2c2c2c')
+        //       }.layoutWeight(1)
+        //       .onClick(()=>{
+        //         this.selectedIndex = index
+        //         this.selectedMenuId = this.menuData[index].menuId
+        //         console.log('父',Index,this.selectedMenuId)
+        //       })
+        //     },(item:MenuInfoResponseData)=>item.menuId)
+        //   }
+        //   .width('100%')
+        //   .height(60)
+        //   .backgroundColor('#fff')
+        // }
+        // .height('100%')
+        // .width('100%')
+
       }
     }
     .height('100%')

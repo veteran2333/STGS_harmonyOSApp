@@ -26,12 +26,16 @@ export default  struct HomePage {
   @State isLoading: boolean = true;
   // 默认菜单
   @Prop selectedMenuId: string = 'default';
+  // @Prop @Watch('selectedMenuIdChange')selectedMenuId: string = 'default';
   // 默认第一个菜单的第一个导航
   @State selectedPageId:string=''
   @State pageData:pageDataType[]=[]
-
+  selectedMenuIdChange():void{
+    this.getColumnData()
+  }
   aboutToAppear(): void {
     this.getColumnData()
+    hilog.info(0x0000, '请求成功', '导航columnData : %{public}s', JSON.stringify(this.columnData) ?? '');
   }
   // 获取导航
   getColumnData(){
@@ -84,26 +88,43 @@ export default  struct HomePage {
             .layoutWeight(1)
         } else {
           Scroll() { // 添加Scroll组件
-            Tabs({barPosition:BarPosition.Start}){
-              ForEach(this.columnData, (item: Page, index: number) => {
-                TabContent(){
-                  ModuleList({ modeLIstData: this.pageData,clickPageitem:item.name })
-                }.tabBar(this.tabBuilder(index,item.name))
-              },(item:Page) => item.circleId)
+            // Tabs({barPosition:BarPosition.Start}){
+            //   ForEach(this.columnData, (item: Page, index: number) => {
+            //     TabContent(){
+            //       ModuleList({ modeLIstData: this.pageData,clickPageitem:item.name })
+            //     }.tabBar(this.tabBuilder(index,item.name))
+            //   },(item:Page) => item.circleId)
+            // }
+            // .onChange((Index:number)=>{
+            //   this.selectedIndex = Index
+            //   this.selectedPageId = this.columnData[Index].pageId
+            //   this.getPageData(this.selectedPageId,uinfo.getProductId())
+            // })
+            // .width('100%') // 设置宽度为100%
+            // .scrollable(true) // 启用滚动
+            // .barMode(BarMode.Scrollable) // 设置滚动模式
+            // .barWidth('100%') // 设置bar宽度
+
+            Row(){
+                ForEach(this.columnData, (item: Page, index: number) => {
+                    Text(item.name)
+                      .fontSize(16)
+                      .fontColor(index === this.selectedIndex ? '#44999a' : '#666666') // 选中时蓝色，未选中时灰色
+                      .fontWeight(index === this.selectedIndex ? FontWeight.Bold : FontWeight.Normal) // 选中时加粗
+                      .margin(10)
+                      .onClick(()=>{
+                          this.selectedIndex = index
+                          this.selectedPageId = this.columnData[index].pageId
+                          this.getPageData(this.selectedPageId,uinfo.getProductId())
+                        })
+                },(item:Page) => item.circleId)
             }
-            .onChange((Index:number)=>{
-              this.selectedIndex = Index
-              this.selectedPageId = this.columnData[Index].pageId
-              this.getPageData(this.selectedPageId,uinfo.getProductId())
-            })
-            .width('100%') // 设置宽度为100%
-            .scrollable(true) // 启用滚动
-            .barMode(BarMode.Scrollable) // 设置滚动模式
-            .barWidth('100%') // 设置bar宽度
           }
           .scrollable(ScrollDirection.Horizontal) // 设置水平滚动
+          ModuleList({ modeLIstData: this.pageData,clickPageitem:this.columnData[this.selectedIndex].name })
         }
       }
+      .padding({bottom:40})
     .height('100%')
     .width('100%')
   }

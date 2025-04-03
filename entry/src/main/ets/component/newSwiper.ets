@@ -1,4 +1,4 @@
-
+// 新版轮播图
 import {newSwiperItemType,moduleData,moduleId,Result} from '../common/type/moduleType';
 import {queryDatas} from '../common/api/moduleApi'
 import { AxiosResponse, AxiosError } from '@ohos/axios'
