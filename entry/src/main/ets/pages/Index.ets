@@ -2,8 +2,10 @@ import { queryMenusBaseInfoByProductId } from'../common/api/userApi'
 import { AxiosResponse, AxiosError } from '@ohos/axios'
 import { MenuInfoResponse,MenuInfoResponseData} from '../common/type/userType';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import  HomePage  from './HomePage'
 import uinfo from '../common/utils/getUserInfo'
+import  HomePage  from './HomePage'
+import  servicePage  from './servicePage'
+
 @Entry
 @Component
 struct Index {
@@ -37,7 +39,11 @@ struct Index {
           // 遍历 menuData 生成 TabContent
           ForEach(this.menuData, (item: MenuInfoResponseData, index: number) => {
             TabContent() {
-              HomePage({ selectedMenuId: item.menuId})
+              if(item.name==='服务'){
+                servicePage({ selectedMenuId: item.menuId,menuName:item.name})
+              }else {
+                HomePage({ selectedMenuId: item.menuId})
+              }
             }.tabBar(this.tabBuilder(index,item.name,item.customizeChosedIcon,item.customizeUnChosedIcon,item.chosedColor)) // 使用 menuName 作为 tabBar 的显示文本
           },(item:MenuInfoResponseData)=>item.menuId)
         }.onChange((Index:number)=>{

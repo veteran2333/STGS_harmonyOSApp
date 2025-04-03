@@ -74,7 +74,7 @@ export default  struct bigImageList {
                   }
 
                   if(item.lives!==undefined&&item.lives.length){
-                    Text(item.liveStatus==='back'?'回看':'')
+                    Text(item.liveStatus==='back'?'回看':'直播')
                       .backgroundColor('#72000000')
                       .height(18)
                       .width(36)
@@ -90,11 +90,11 @@ export default  struct bigImageList {
 
                 }
                 Row(){
-                  if(item.lives!==undefined&&item.lives.length){
-
-                  }else {
-
-                  }
+                  // if(item.lives!==undefined&&item.lives.length){
+                  //
+                  // }else {
+                  //
+                  // }
                   Text(item.lives!==undefined&&item.lives.length?item.roomName:item.name)
                     .linearGradient({
                       direction: GradientDirection.Bottom, // 渐变方向
@@ -105,6 +105,8 @@ export default  struct bigImageList {
                     .width('100%')
                     .padding({left:5})
                     .fontSize(12)
+                    .textOverflow({overflow:TextOverflow.Ellipsis})
+                    .maxLines(1)
                     .height(32)
                     .borderRadius({bottomLeft:10,bottomRight:10})
 

@@ -13,6 +13,7 @@ import topModule from '../component/topModule'
 import WaterFlowPage from '../component/WaterFlowPage'
 import smallImageList from '../component/smallImageList'
 import bigPictureList from '../component/bigPictureList'
+import H5Links from '../component/H5Links'
 
 @Component
 export default  struct ModuleList {
@@ -67,6 +68,8 @@ export default  struct ModuleList {
                   WaterFlowPage({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
                 }else if(item.type==='小图列表'){
                   smallImageList({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
+                }else if(item.type==='H5外链'){
+                  H5Links({ pageId: item.pageId, modules: item._id, freshPageNum: this.freshPageNum })
                 }else {
                   Text(item.type)
                     .width('70%')
